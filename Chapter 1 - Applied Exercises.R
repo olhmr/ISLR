@@ -54,3 +54,51 @@ plot(data = college, Books ~ Personal)
 plot(data = college, S.F.Ratio ~ Private)
 
 ## Question 9 ##
+auto <- ISLR::Auto
+sum(is.na(auto)) # Check that no NAs
+
+# 9.a.
+str(auto)
+unique(auto$cylinders)
+unique(auto$origin)
+# mpg, displacement, horsepower, weight, acceleration, and year appear quantitative
+# cylinders, origin, and name appear qualitative
+# cylinders and origin are numeric, but the limited number of options for each indicate that they are 
+# categorial. year could also feasibly be considered categorial, but since there could be value in a 
+# quantitative regression run on year we will consider it as quantitative.
+
+# 9.b.
+lapply(X = auto[, c(1, 3, 4, 5, 6, 7)], FUN = range)
+
+# 9.c.
+lapply(X = auto[, c(1, 3, 4, 5, 6, 7)], FUN = mean)
+lapply(X = auto[, c(1, 3, 4, 5, 6, 7)], FUN = sd)
+
+# 9.d.
+auto_sub <- auto[-(10:85), ]
+lapply(X = auto_sub[, c(1, 3, 4, 5, 6, 7)], FUN = range)
+lapply(X = auto_sub[, c(1, 3, 4, 5, 6, 7)], FUN = mean)
+lapply(X = auto_sub[, c(1, 3, 4, 5, 6, 7)], FUN = sd)
+
+# 9.e.
+pairs(auto)
+par(mfrow = c(2,2))
+plot(data = auto, mpg ~ weight)
+plot(data = auto, mpg ~ year)
+plot(data = auto, weight ~ year)
+plot(data = auto, acceleration ~ year)
+# Heavier vehicles generally get fewer miles per gallon, but mpg has improved in later generations of cars.
+# It is true that newer cars are generally lighter, but it seems there may be some other cause of improved
+# mpg performance - perhaps in engine efficiency. Acceleration has remained mostly constant in newer
+# generations of cars, suggesting that improved mpg performance is not coming at the cost of weaker engines.
+
+# 9.f.
+pairs(auto)
+# Moving on from the insights from 9.e., there definitely seems to be a correlation between displacement, 
+# horsepower, weight, year, and cylinders with mpg. However, there is definitely some synergy effects here, 
+# since displacement, horsepwower, weight, and, to some extent, cylinders, have an almost perfectly linear 
+# relationship with eachother. As such, we would likely only use one of these variables as the predictor,
+# in addition to year.
+# An argument could be made that origin is also of interest, but the correlation appears to be quite weak.
+
+## Question 10 ##
