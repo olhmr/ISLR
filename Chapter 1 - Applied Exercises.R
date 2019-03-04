@@ -102,3 +102,27 @@ pairs(auto)
 # An argument could be made that origin is also of interest, but the correlation appears to be quite weak.
 
 ## Question 10 ##
+library(MASS)
+boston <- MASS::Boston
+
+# 10.a.
+?MASS::Boston
+# 506 rows, 14 columns
+# Rows are observations, where each row is one town
+# Columns are predictors such as crime rate, tax rate, etc., along with the response medv (median house value)
+
+# 10.b.
+pairs(boston)
+par(mfrow = c(2, 2))
+plot(data = boston, medv ~ rm)
+plot(data = boston, medv ~ crim)
+plot(data = boston, dis ~ rad)
+plot(data = boston, age ~ dis)
+# unsurprisingly, higher average rooms by house appears associated with higher median house prices. Again 
+# unexpectedly, higher crime rates appear to preclude high house values. The radial highways appear to be 
+# quite close to the city centre, as the towns with the best access to the highways had the shortest 
+# distance to employment centres. In addition, the oldest houses tended to be closer to the centres, 
+# suggesting Boston was small and grew outwards, as opposed to being an amalgamation of several smaller
+# cities.
+
+# 10.c. 
