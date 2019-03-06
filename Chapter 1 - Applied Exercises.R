@@ -118,7 +118,7 @@ plot(data = boston, medv ~ rm)
 plot(data = boston, medv ~ crim)
 plot(data = boston, dis ~ rad)
 plot(data = boston, age ~ dis)
-# unsurprisingly, higher average rooms by house appears associated with higher median house prices. Again 
+# Unsurprisingly, higher average rooms by house appears associated with higher median house prices. Again 
 # unexpectedly, higher crime rates appear to preclude high house values. The radial highways appear to be 
 # quite close to the city centre, as the towns with the best access to the highways had the shortest 
 # distance to employment centres. In addition, the oldest houses tended to be closer to the centres, 
@@ -126,3 +126,29 @@ plot(data = boston, age ~ dis)
 # cities.
 
 # 10.c. 
+par(mfrow = c(2, 2))
+plot(data = boston, crim ~ chas) 
+# Towns that bound the river generally have much lower crime rates, and no properties with high crime 
+# rates bound the river. This is likely because properties that bound the river tend to be more expensive,
+# and median house values are associated with less crime (as we shall see later)
+plot(data = boston, crim ~ age)
+# High crime rates only appear among the older towns - particularly interesting is the stretch between
+# 80 - 100 years, where almost all towns with >20% crime rate fall
+plot(data = boston, crim ~ dis)
+# High crime rate towns appear to be closer to the employment centres, suggesting inner city crime rates
+# are higher than suburbs, which is generally what we would expect
+plot(data = boston, crim ~ rad)
+# This is more or less the same discussion as for distance - as can be seen below, there appears to be a 
+# cluster of low distance and high radial access towns which have high crime rates, probably because 
+# they're inner city
+plot(data = boston, crim ~ tax)
+# Intersetingly, most high crime rate towns have a quite high tax rate. This is probably because higher
+# crime rates occur closer to the city centre, as seen above, and, as seen below, these generally 
+# have higher tex rates
+plot(data = boston, tax ~ dis)
+plot(data = boston, crim ~ lstat) 
+# Lower status is associated with higher crime rate - likely because poor and destitute people are more 
+# likely to resort to crime than richer people with stronger safety nets
+plot(data = boston, crim ~ medv)
+# More expensive towns tend to have less crime, although there is a slight uptick again for the most 
+# expensive towns. This is likely because more expensive towns would have fewer poor or unemployed people
