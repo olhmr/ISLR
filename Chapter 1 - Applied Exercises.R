@@ -171,3 +171,17 @@ nrow(boston[boston$chas == 1, ])
 
 # 10.f.
 median(boston$ptratio)
+
+# 10.g.
+boston[boston$medv == min(boston$medv), ]
+# Numbers 399 and 406 both have a medv statistic of 5000$
+summary(boston)
+# The crime rates for the two cases are very different, although still above average, but they both have 
+# indus values in the top ofthe third quartile. Nitrogen oxide concentrations are also unusally high, and 
+# the number of rooms are on the low end, although not far from the first quartile. Both suburbs are at the 
+# max of the age range. Distance to employment centres is low and access to radial high ways high. Tax is 
+# also high, as is the ptratio, but the proportion of blacks in the suburbs vary from second to fourth 
+# quartile. The lstat is very high. 
+# Overall, while there is a lot of fluctuation there is a high crime rate and percentage of lower status 
+# population, located close to employment centers and major highways, few teachers, and the suburbs 
+# are old.
