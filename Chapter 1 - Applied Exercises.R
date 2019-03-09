@@ -185,3 +185,13 @@ summary(boston)
 # Overall, while there is a lot of fluctuation there is a high crime rate and percentage of lower status 
 # population, located close to employment centers and major highways, few teachers, and the suburbs 
 # are old.
+
+# 10.h.
+nrow(boston[boston$rm > 7, ])
+nrow(boston[boston$rm > 8, ])
+summary(boston[boston$rm > 8, ])
+summary(boston)
+# Crime is lower in these suburbs, they have less industry, they're more likely to bound the river, they're
+# generally not different in age, they're farther from employment centres, have lower tax rates, higher 
+# pupil teacher ratios, higher proportion of black people, fewer low status people, and they're generally 
+# twice as expensive.
